@@ -51,7 +51,6 @@ function getTodos(){
 function appendTodos(todos){
   $('#notCompleted').empty();
   $('#completedSection').empty();
-  $('#completedSection').append('<h3>Completed</h3>');
 
   $(todos).each(function(index){
     // checks if item is completed or not
@@ -97,7 +96,7 @@ function createTodo(){
   $('#notCompleted').prepend(
     '<div class="todo-item">' +
       '<input type="checkbox"></input>' +
-      '<p class="title"></p>' +
+      '<p class="title">todo</p>' +
       '<button class="delete-button">×</button>' +
     '</div>'
   );
@@ -115,8 +114,12 @@ function editTodo(selectedTitle){
 
   $title.replaceWith($input);
 
-  $input.on('submit blur', function(event){
-    event.preventDefault();
+  $input.on('keypress blur', function(event){
+    if (event.keyCode == 13){
+      event.preventDefault();
+    } else {
+      return true;
+    }
     var $p = $('<p class="title"/>').text($input.val());
 
     var idToEdit = $(this).parent().data();
