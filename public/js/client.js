@@ -13,9 +13,13 @@ $(document).ready(function(){
     }
   }
 
-  $('main').on('click', '.delete-button', function(){
+  $('#todoList').on('click', '.delete-button', function(){
     event.preventDefault();
     deleteTodo(this);
+  });
+
+  $('#todoList').on('click', 'input:checkbox', function(){
+    toggleComplete(this);
   });
 
   $('.create-todo').on('click', function(){
@@ -104,8 +108,17 @@ function createTodo(){
 }
 
 // toggles todo item's complete status
-function toggleComplete(){
-  
+function toggleComplete(togglePressed){
+  var idToEdit = $(togglePressed).parent().data();
+
+  $.ajax({
+    type: 'PUT',
+    url: '/todo/toggle/' + idToEdit.id,
+    success: getTodos,
+    error: function(error){
+      console.log('toggle request failed with error:', error);
+    }
+  });
 }
 
 // edit title of todo
