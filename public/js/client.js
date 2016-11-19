@@ -15,7 +15,12 @@ $(document).ready(function(){
 
   $('#todoList').on('click', '.delete-button', function(){
     event.preventDefault();
-    deleteTodo(this);
+    var titleOfTodo = $(this).parent().find('p').text();
+    var areYouSure = confirm('"' + titleOfTodo + '" will now be deleted');
+
+    if(areYouSure === true){
+      deleteTodo(this);
+    }
   });
 
   $('#todoList').on('click', 'input:checkbox', function(){
