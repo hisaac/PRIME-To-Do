@@ -2,12 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>To-Do</title>
+    <title>To→Do</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="/css/normalize.min.css" />
     <link rel="stylesheet" href="/css/main.css" />
     <script type="text/javascript" src="vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/fastclick.js"></script>
     <script type="text/javascript" src="js/client.js"></script>
   </head>
   <body>
@@ -19,13 +20,7 @@
     </div>
 
     <main>
-      <form id="todoList">
-        <div class="todo-item">
-          <input type="checkbox"></input>
-          <p>item 1</p>
-          <button class="delete-button">×</button>
-        </div>
-      </form>
+      <form id="todoList"></form>
     </main>
 
     <footer><p>&copy; <span id="thisYear">2016</span>, Isaac Halvorson</p></footer>

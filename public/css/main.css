@@ -1,3 +1,8 @@
+html {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
 #topBar {
   display: flex;
   justify-content: space-around;
@@ -19,6 +24,21 @@ form {
 .todo-item * {
   display: inline;
   margin: 0 10px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+#askToInstall {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #efefef;
+  text-align: center;
+  font-size: 2em;
+  padding: 10px;
 }
 
 footer {
