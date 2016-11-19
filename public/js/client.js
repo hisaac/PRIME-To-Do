@@ -105,7 +105,7 @@ function createTodo(){
 
 // toggles todo item's complete status
 function toggleComplete(){
-
+  
 }
 
 // edit title of todo

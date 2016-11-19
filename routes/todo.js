@@ -17,7 +17,6 @@ router.get('/', function(req, res){
         console.log('select query error:', err);
         res.sendStatus(500);
       }
-
       res.send(result.rows);
     }); // client.query
   }); // pg.connect
@@ -41,6 +40,26 @@ router.post('/', function(req, res){
   }); // pg.connect
   res.sendStatus(200);
 }); // router.post
+
+router.put('/toggle/:id', function(req, res){
+  pg.connect(connectionString, function(err, client, done){
+    if(err){
+      console.log('connection to server error:', err);
+      res.sendStatus(500);
+    }
+
+    client.query(
+      "UPDATE todos SET completed = NOT completed WHERE id=$1",
+      [req.params.id],
+      function(err, result){
+        done();
+        if(err){
+          console.log('put query error:', err);
+        }
+      }
+    ); // client.query
+  }); // pg.connect
+}); // router.put
 
 router.put('/:newTitle/:id', function(req, res){
   pg.connect(connectionString, function(err, client, done){
