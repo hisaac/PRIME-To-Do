@@ -1,0 +1,59 @@
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+
+/* Only select pieces of normalize.css used in this file */
+
+/**
+ * 1. Change the default font family in all browsers (opinionated)
+ * 2. Correct the line height in all browsers
+ * 3. Prevent adjustments of font size after orientation changes in iOS
+ */
+html {
+  font-family: sans-serif; /* 1 */
+  line-height: 1.15; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
+
+/* Remove the margin in all browsers (opinionated) */
+body {
+  margin: 0;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Remove gaps in links underline */
+a {
+  -webkit-text-decoration-skip: objects;
+}
+
+/* Remove the outline on focused links when they are also active or hovered */
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/* Add the correct font size in all browsers */
+small {
+  font-size: 80%;
+}
+
+/**
+ * 1. Change the font styles in all browsers (opinionated)
+ * 2. Remove the margin
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
