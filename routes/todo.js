@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var connectionString = 'postgres://localhost:5432/hisaac';
+// var connectionString = 'postgres://localhost:5432/hisaac'; // local
+var connectionString = 'process.env.DATABASE_URL'; // heroku
+pg.defaults.ssl = true;
 
 router.get('/', function(req, res){
   pg.connect(connectionString, function(err, client, done){
