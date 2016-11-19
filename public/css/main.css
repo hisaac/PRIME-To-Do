@@ -1,0 +1,9 @@
+* {font-family: sans-serif;}
+
+#topBar {
+  display: flex;
+}
+
+nav {font-size: 2em;}
+header {font-size: 5em;}
+#createTodo {font-size: 2em;}

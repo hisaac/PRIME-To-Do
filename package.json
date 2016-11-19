@@ -1,0 +1,24 @@
+{
+  "name": "to-do",
+  "version": "1.0.0",
+  "description": "A simple to-do app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hisaac/PRIME_to-do.git"
+  },
+  "author": "Isaac Halvorson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hisaac/PRIME_to-do/issues"
+  },
+  "homepage": "https://github.com/hisaac/PRIME_to-do#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "jquery": "^3.1.1"
+  }
+}
