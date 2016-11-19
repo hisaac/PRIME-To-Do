@@ -10,7 +10,7 @@ router.get('/', function(req, res){
       res.sendStatus(500);
     }
 
-    client.query('SELECT * FROM todos ORDER BY id;', function(err, result){
+    client.query('SELECT * FROM todos ORDER BY id DESC;', function(err, result){
       done(); // close the connection
 
       if(err){
@@ -24,8 +24,23 @@ router.get('/', function(req, res){
 }); // router.get
 
 router.post('/', function(req, res){
+  pg.connect(connectionString, function(err, client, done){
+    if(err){
+      console.log('connection to server error:', err);
+      res.sendStatus(500);
+    }
 
-});
+    client.query("INSERT INTO todos (title) VALUES ('new todo');", function(err, result){
+      done();
+
+      if(err){
+        console.log('insert query error:', err);
+        res.sendStatus(500);
+      }
+    }); // client.query
+  }); // pg.connect
+  res.sendStatus(200);
+}); // router.post
 
 router.put('/:newTitle/:id', function(req, res){
   pg.connect(connectionString, function(err, client, done){
@@ -46,7 +61,7 @@ router.put('/:newTitle/:id', function(req, res){
     ); // client.query
   }); // pg.connect
   res.sendStatus(200);
-});
+}); // router.put
 
 router.delete('/:id', function(req, res){
   pg.connect(connectionString, function(err, client, done){

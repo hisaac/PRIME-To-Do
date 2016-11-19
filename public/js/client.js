@@ -93,13 +93,14 @@ function deleteTodo(buttonPressed){
 
 // creates new todo
 function createTodo(){
-  $('#notCompleted').prepend(
-    '<div class="todo-item">' +
-      '<input type="checkbox"></input>' +
-      '<p class="title">todo</p>' +
-      '<button class="delete-button">×</button>' +
-    '</div>'
-  );
+  $.ajax({
+    type: 'POST',
+    url: '/todo',
+    success: getTodos,
+    error: function(error){
+      console.log('ajax post request failed with error:', error);
+    }
+  });
 }
 
 // toggles todo item's complete status
