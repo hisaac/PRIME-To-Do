@@ -26,7 +26,9 @@ function checkYear(){
 
 // appends all items to DOM
 function appendTodos(){
-  // jQuery .append()
+  // $('main').append(
+  //
+  // )
 }
 
 // toggles completion of todo item
