@@ -21,6 +21,14 @@ form {
   margin: 10px;
 }
 
+.checked {
+  opacity: .4;
+}
+
+.checked p {
+  text-decoration: line-through;
+}
+
 .todo-item {
   display: flex;
   justify-content: space-around;
@@ -35,6 +43,10 @@ form {
 
 .completed {
   text-decoration: line-through;
+}
+
+#completedSection h3{
+  text-align: center;
 }
 
 #askToInstall {

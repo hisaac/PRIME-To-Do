@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/normalize.min.css" />
     <link rel="stylesheet" href="/css/main.css" />
     <script type="text/javascript" src="vendor/jquery.min.js"></script>
-    <script type="text/javascript" src="vendor/fastclick.js"></script>
+    <script type="text/javascript" src="vendor/jQuery.fastClick.js"></script>
     <script type="text/javascript" src="js/client.js"></script>
   </head>
   <body>
@@ -20,7 +20,13 @@
     </div>
 
     <main>
-      <form id="todoList"></form>
+      <form id="todoList">
+        <section id="notCompleted"></section>
+        <section id="completedSection">
+          <hr />
+          <p>Completed</p>
+        </section>
+      </form>
     </main>
 
     <footer><p>&copy; <span id="thisYear">2016</span>, Isaac Halvorson</p></footer>

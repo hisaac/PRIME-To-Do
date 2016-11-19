@@ -1,7 +1,7 @@
-var testing = true;
+var production = false;
 
 $(document).ready(function(){
-  if (testing === true){
+  if (production === false){
     getTodos();
     checkYear();
   } else {
@@ -13,8 +13,19 @@ $(document).ready(function(){
     }
   }
 
-  $('button').fastClick();
-  $('input').fastClick();
+  $('main').on('click', '.delete-button', function(){
+    event.preventDefault();
+    deleteTodo(this);
+  });
+
+  $('.create-todo').on('click', function(){
+    event.preventDefault();
+    createTodo();
+  })
+
+  $('#todoList').on('click', '.title', function(){
+    editTodo(this);
+  });
 
 });
 
@@ -24,8 +35,104 @@ function askToInstall(){
 
 // gets all items from database
 function getTodos(){
-  // ajax GET
-  appendTodos();
+  $.ajax({
+    type: 'GET',
+    url: '/todo',
+    success: function(data){
+      appendTodos(data);
+    },
+    error: function(error){
+      console.log('todo get request failed with error:', error);
+    }
+  });
+}
+
+// appends all items to DOM
+function appendTodos(todos){
+  $('#notCompleted').empty();
+  $('#completedSection').empty();
+  $('#completedSection').append('<h3>Completed</h3>');
+
+  $(todos).each(function(index){
+    // checks if item is completed or not
+    if(todos[index].completed === true){
+      $('#completedSection').append(
+        '<div class="todo-item checked">' +
+          '<input type="checkbox" checked></input>' +
+          '<p class="title">' + todos[index].title + '</p>' +
+          '<button class="delete-button">×</button>' +
+        '</div>'
+      );
+      $('#completedSection').find('.todo-item').last().data('id', todos[index].id);
+    } else {
+      $('#notCompleted').append(
+        '<div class="todo-item">' +
+          '<input type="checkbox"></input>' +
+          '<p class="title">' + todos[index].title + '</p>' +
+          '<button class="delete-button">×</button>' +
+        '</div>'
+      );
+      $('#notCompleted').find('.todo-item').last().data('id', todos[index].id);
+    }
+  });
+}
+
+// deletes item from DOM and database
+function deleteTodo(buttonPressed){
+  var idToDelete = $(buttonPressed).parent().data();
+
+  $.ajax({
+    type: 'DELETE',
+    url: '/todo/' + idToDelete.id,
+    success: getTodos,
+    error: function(error){
+      console.log('delete request failed with error:', error);
+    }
+  });
+  $(buttonPressed).parent().remove();
+}
+
+// creates new todo
+function createTodo(){
+  $('#notCompleted').prepend(
+    '<div class="todo-item">' +
+      '<input type="checkbox"></input>' +
+      '<p class="title"></p>' +
+      '<button class="delete-button">×</button>' +
+    '</div>'
+  );
+}
+
+// toggles todo item's complete status
+function toggleComplete(){
+
+}
+
+// edit title of todo
+function editTodo(selectedTitle){
+  var $title = $(selectedTitle);
+  var $input = $('<input/>').val($title.text());
+
+  $title.replaceWith($input);
+
+  $input.on('submit blur', function(event){
+    event.preventDefault();
+    var $p = $('<p class="title"/>').text($input.val());
+
+    var idToEdit = $(this).parent().data();
+
+    $.ajax({
+      type: 'PUT',
+      url: '/todo/' + $p.text() + '/' + idToEdit.id,
+      success: getTodos,
+      error: function(error){
+        console.log('todo put request failed with error:', error);
+      }
+    });
+
+    $input.replaceWith($p);
+
+  }).focus();
 }
 
 // checks current year to hard coded start year in footer,
@@ -34,56 +141,4 @@ function checkYear(){
   if ($('#thisYear').text() !== (new Date).getFullYear().toString()){
     $('#thisYear').append('–' + (new Date).getFullYear());
   }
-}
-
-// appends all items to DOM
-function appendTodos(){
-  // for each from returned todo array
-  $('main').append(
-    '<div class="todo-item">' +
-      '<input type="checkbox"></input>' +
-      '<p>item 1</p>' +
-      '<button class="delete-button">×</button>' +
-    '</div>' +
-    '<div class="todo-item">' +
-      '<input type="checkbox"></input>' +
-      '<p>item 2</p>' +
-      '<button class="delete-button">×</button>' +
-    '</div>' +
-    '<div class="todo-item">' +
-      '<input type="checkbox"></input>' +
-      '<p>item 3</p>' +
-      '<button class="delete-button">×</button>' +
-    '</div>' +
-    '<div class="todo-item">' +
-      '<input type="checkbox"></input>' +
-      '<p>item 4</p>' +
-      '<button class="delete-button">×</button>' +
-    '</div>' +
-    '<div class="todo-item">' +
-      '<input type="checkbox"></input>' +
-      '<p class="completed">item 5</p>' +
-      '<button class="delete-button">×</button>' +
-    '</div>' +
-    '<div class="todo-item">' +
-      '<input type="checkbox"></input>' +
-      '<p class="completed">item 6</p>' +
-      '<button class="delete-button">×</button>' +
-    '</div>'
-  )
-}
-
-// toggles completion of todo item
-function toggleComplete(){
-  // ajax PUT
-}
-
-// deletes item from DOM and database
-function deleteTodo(){
-  // ajax DELETE
-}
-
-// edit title of todo
-function editTodo(){
-  // ajax PUT
 }
