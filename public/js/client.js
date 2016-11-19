@@ -1,15 +1,21 @@
+var testing = true;
+
 $(document).ready(function(){
-
-  window.addEventListener('load', function() {
-    new FastClick(document.body);
-  }, false);
-
-  if(window.navigator.standalone === false){
-    askToInstall();
-  } else {
+  if (testing === true){
     getTodos();
     checkYear();
+  } else {
+    if(window.navigator.standalone === false){
+      askToInstall();
+    } else {
+      getTodos();
+      checkYear();
+    }
   }
+
+  $('button').fastClick();
+  $('input').fastClick();
+
 });
 
 function askToInstall(){
@@ -63,7 +69,7 @@ function appendTodos(){
       '<input type="checkbox"></input>' +
       '<p class="completed">item 6</p>' +
       '<button class="delete-button">×</button>' +
-    '</div>' +
+    '</div>'
   )
 }
 
