@@ -1,6 +1,5 @@
 // If this is set to true, when the site is loaded on an iOS device, it will
 // prompt the user to 'install' the app. If set to false, it will load normally.
-
 var production = false;
 
 $(document).ready(function(){
