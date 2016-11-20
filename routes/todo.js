@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-// var connectionString = 'postgres://localhost:5432/hisaac'; // local
-var connectionString = 'postgres://oriudgjxijjxpi:9DIlFAJmZxVcFITj3VxjjXcqR7@ec2-50-17-227-146.compute-1.amazonaws.com:5432/d5rrd9ida7sdjf'; // heroku
+var connectionString = 'postgres://oriudgjxijjxpi:9DIlFAJmZxVcFITj3VxjjXcqR7@ec2-50-17-227-146.compute-1.amazonaws.com:5432/d5rrd9ida7sdjf' || 'postgres://localhost:5432/hisaac';
 pg.defaults.ssl = true;
 
 router.get('/', function(req, res){
