@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 // var connectionString = 'postgres://localhost:5432/hisaac'; // local
-var connectionString = 'process.env.DATABASE_URL?ssl=true'; // heroku
+var connectionString = 'postgres://oriudgjxijjxpi:9DIlFAJmZxVcFITj3VxjjXcqR7@ec2-50-17-227-146.compute-1.amazonaws.com:5432/d5rrd9ida7sdjf'; // heroku
 pg.defaults.ssl = true;
 
 router.get('/', function(req, res){
