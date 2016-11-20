@@ -1,13 +1,21 @@
+/* pallette
+#04587F
+#B01D01
+#DA7E01
+*/
+
 html {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  color: white;
 }
 
 #topBar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: #efefef;
+  background-color: #04587F;
+  border-radius: 3px 3px 0 0;
 }
 
 nav,
@@ -21,6 +29,22 @@ form {
   margin: 10px;
 }
 
+/*input[type=checkbox] {
+  -webkit-transform: scale(1.5);
+  padding: 5px;
+}*/
+
+.delete-button, .create-todo {
+  font-family: Helvetica;
+  font-weight: bold;
+  border: 1px solid black;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
 .checked {
   opacity: .4;
 }
@@ -31,14 +55,21 @@ form {
 
 .todo-item {
   display: flex;
-  justify-content: space-around;
-  background-color: #efefef;
+  justify-content: space-between;
+  background-color: #DA7E01;
   margin: 10px;
+  font-size: 1.4em;
+  border-radius: 10px;
+  text-decoration: underline;
 }
 
 .todo-item * {
   display: inline;
   margin: 10px;
+}
+
+.todo-item p {
+  margin: 12px 0;
 }
 
 .completed {
@@ -65,6 +96,7 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #efefef;
+  background-color: #04587F;
   text-align: center;
+  border-radius: 0 0 3px 3px;
 }
