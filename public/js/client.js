@@ -1,4 +1,4 @@
-var production = true;
+var production = false;
 
 $(document).ready(function(){
   if (production === false){
