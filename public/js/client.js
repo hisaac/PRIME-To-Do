@@ -38,6 +38,10 @@ $(document).ready(function(){
     editTodo(this);
   });
 
+  $('nav').on('click', function(){
+    alert("Yeah, this doesn't really do anything yet.");
+  });
+
 });
 
 function askToInstall(){

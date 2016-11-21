@@ -15,17 +15,12 @@ html {
   justify-content: space-between;
   align-items: center;
   background-color: #04587F;
-  border-radius: 3px 3px 0 0;
 }
 
 nav,
 header,
 .create-todo {
   font-size: 2em;
-  margin: 10px;
-}
-
-form {
   margin: 10px;
 }
 
