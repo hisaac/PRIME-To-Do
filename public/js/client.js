@@ -1,19 +1,14 @@
 // If this is set to true, when the site is loaded on an iOS device, it will
 // prompt the user to 'install' the app. If set to false, it will load normally.
-var production = false;
+var production = true;
 
 $(document).ready(function(){
-  if (production === false){
-    getTodos();
-    checkYear();
-  } else {
-    if(window.navigator.standalone === false){
-      askToInstall();
-    } else {
-      getTodos();
-      checkYear();
-    }
+  if (production === true && window.navigator.standalone === false) {
+    askToInstall();
   }
+
+  getTodos();
+  checkYear();
 
   $('#todoList').on('click', '.delete-button', function(){
     event.preventDefault();
@@ -157,9 +152,6 @@ function editTodo(selectedTitle){
         console.log('todo put request failed with error:', error);
       }
     });
-
-    $input.replaceWith($p);
-
   }).focus();
 }
 

@@ -93,6 +93,7 @@ router.delete('/:id', function(req, res){
     client.query(
       "DELETE FROM todos WHERE id = '" + req.params.id + "';",
       function(err, result){
+        done();
         if(err){
           console.log('delete query error:', err);
           res.sendStatus(500);
