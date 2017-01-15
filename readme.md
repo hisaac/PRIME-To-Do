@@ -8,7 +8,7 @@ I used this project as a way to explore iOS web apps, inspired by the late [fore
 
 This app runs in a web browser like normal, but after loading it, you can 'install' it onto your device. On iOS, tap the 'share' button at the bottom of the screen, and select 'Add to Home Screen'. A new icon will be added to your home screen that loads a web view with the app inside it. This is nice because it removes all the Safari parts — back and forward buttons, reload button, url bar, etc. — so it appears almost like a regular old app!
 
-I also used this project to explore Heroku more. I managed to get a Postgres database set up in Heroku, and use that as the app's database. This was difficult at first, as the database was empty and I had to find a way to populate it with initial data to make it work. Here is the app hosted on Heroku: [powerful-lake-99030.herokuapp.com](https://powerful-lake-99030.herokuapp.com)
+I also used this project to explore Heroku more. I managed to get a Postgres database set up in Heroku, and use that as the app's database. This was difficult at first, as the database was empty and I had to find a way to populate it with initial data to make it work. Here is the app hosted on Heroku: [ta-do.herokuapp.com/](https://ta-do.herokuapp.com/)
 
 ## Known issues
 
